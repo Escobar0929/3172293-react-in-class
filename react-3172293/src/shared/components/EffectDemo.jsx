@@ -8,6 +8,7 @@ export default function EffectDemo(){
     const [message, setMessage] = useState("Cargando...");
 
     useEffect(() =>{
+        
         setTimeout(() => {
             setMessage("Componente cargado");
         }, 2000);

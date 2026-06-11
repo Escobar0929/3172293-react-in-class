@@ -1,23 +1,22 @@
-import { useState } from 'react'; // 1. Importamos useState
+// Ejemplo de contador sin usar estados
 
-export default function DeleteCounter2() {
+export default function DeleteCounter2(){
 
-  const [count, setCount] = useState(0);
+let count = 0;
 
-  const increment = () => {
- 
-    setCount(count + 1);
-    console.log("Nuevo valor es: ", count + 1);
-  };
+const increment = () => {
+    
+    count = count + 1
+    console.log("   El nuevo valor es: ", count)
+}     
 
-  return (
-    <div>
-      {/* 4. React se encargará de actualizar este texto automáticamente */}
-      <p>Contador: {count}</p>
-      
-      <button onClick={increment}>
-        Incrementar
-      </button>
-    </div>
-  );
+return(
+        <div>
+            <p>contador: {count}</p>
+            <button onClick={increment} className="border p-6 bg-blue-600">
+                increment</button>
+        </div>
+
+    )
+
 }

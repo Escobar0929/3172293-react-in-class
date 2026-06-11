@@ -1,22 +1,21 @@
-import { Outlet} from "react-router-dom";
-import authBg from "@/assets/images/bg-3.jpg";
+import{ Outlet } from "react-router-dom";
+import authBg from "@/assets/images/bg-2.jpg";
 
-export default function DashBoardLayout() {
-    return (
+export default function DashboardLayout(){
+    return ( 
         <>
-            <div 
-        className="min-h-screen w-full"
-        style={{
-            backgroundImage: `url(${authBg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",   
-        }}
-        >
-            <main className="mx-auto">
-                <h1>Yo soy DashBoardLayout</h1>
+            <div
+            className="min-h-screen w-full"
+            style={{
+                backgroundImage: `url(${authBg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+            }}
+            >
+                <main className="mx-auto">
                 <Outlet />
-            </main>
-        </div>
+                </main>
+            </div>
         </>
     );
-}
+} 
