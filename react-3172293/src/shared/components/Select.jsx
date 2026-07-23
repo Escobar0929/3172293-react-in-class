@@ -2,8 +2,11 @@
 
 export default function Select({
     label, 
+    error,
     htmlFor,
     name, 
+    onChange,
+    value,
     options = [],
 }){
     return (
@@ -25,10 +28,12 @@ export default function Select({
             {/* Select */}
             <select
                 name={name}
+                onChange={onChange}
+                valeu={value}
                 id={htmlFor}
                 className="
-                    w-full
-                    h12
+                    w-80
+                    h-12
                     rounded-md
                     border
                     px-4
@@ -48,6 +53,10 @@ export default function Select({
                 ))}
 
             </select>
+
+            {error && (
+                <p className="text-caption text-red-800 place-self-start mt-1">{error}</p>
+             )}
 
         </div>
     );

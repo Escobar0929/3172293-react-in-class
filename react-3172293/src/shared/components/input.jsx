@@ -1,5 +1,6 @@
 export default function Input({
     label,
+    error,
     htmlFor,
     type= "text",
     variant= "primary",
@@ -43,7 +44,6 @@ export default function Input({
             text-caption
             text-secondary
             ${
-
                 size === "sm"
                 ? "-mb-2"
                 : size === "md"
@@ -51,6 +51,8 @@ export default function Input({
                 :"mb-1"
 
             }
+
+            ${error ? "text-red-800" : "text-caption"}
             
             `}
                 >
@@ -66,6 +68,7 @@ export default function Input({
                     text-caption
                     mb-1
                     text-secondary
+
                 "
                 >
                 {label}
@@ -95,7 +98,7 @@ export default function Input({
                     {/* Input visual */}
                     <input
                         id={htmlFor}
-                        type={type}
+                        type={type}                        
                         className={`
                         relative
                         w-80
@@ -107,15 +110,20 @@ export default function Input({
                         focus:ring-2
                         focus:ring-ring
                         focus:ring-brand
-                        before:content-['']
+                        before:content-[''] 
                         before:absolute
 
                         ${variants[variant]}
                         ${sizes[size]}
+                        ${error ? "border-red-800" : "border border-border"} 
                         `}
                         {...props}
                     />
             </div>
+            {/* Feedback */}
+            {error && (
+                <p className="text-caption text-red-800 place-self-start">{error}</p>
+            )}
         </div>
-    )
+    );
 }

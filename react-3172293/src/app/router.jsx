@@ -1,6 +1,9 @@
 // src/app/router.jsx
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import { AuthLayout, DashboardLayout } from "@/shared";
+import { AuthLayout } from "@/shared";
+import { DashboardLayout} from "@/shared";
+import { UserListPage, UserRegisterForm } from "@/features/users";
+// import DeleteCounter from "@/shared/components/DeleteCounter";
 
 const router = createBrowserRouter([
   {
@@ -10,19 +13,20 @@ const router = createBrowserRouter([
   {
     path: "/auth",
     element: <AuthLayout />,
-    children: [
-        { 
-        index: true,
-     }
-    ],
+    children:[
+          { 
+            index: true,
+          }
+        ],
   },
   {
     path: "/dashboard",
     element: <DashboardLayout/>,
     children: [
-      { index: true, element: <h1>mojando la rata</h1> },
-      { path: "/dashboard/auth", element: <h1>Hello1</h1>  },
-      { path: "/dashboard/userList", element: <h1>Hello1</h1> },
+      { index: true, element: <UserRegisterForm /> },
+      // { path: "/dashboard/auth", element: <h1>Hello2</h1>  },
+      { path: "/dashboard/userList", element: <UserListPage/>},
+      { path: "/dashboard/userCreate", element: <UserRegisterForm/>},
     ],
   },
 ]);

@@ -11,3 +11,13 @@ export { default as EffectDemo } from "./components/EffectDemo";
 export { default as CounterEffect } from "./components/CounterEffect";
 export { default as Select } from "./components/Select";
 export { default as Checkbox } from "./components/Checkbox";
+export { default as IconButton } from "./components/IconButton";
+export { default as SearchField } from "./components/SearchField";
+export { default as FileInput } from "./components/FileInput";
+export { default as StatusSwitch } from "./components/StatusSwitch";
+export { default as DataTable } from "./components/DataTable";
+export * from "./components/Dropdown";
+
+// Layaut components
+export { default as Navbar } from "./layouts/Navbar";
+

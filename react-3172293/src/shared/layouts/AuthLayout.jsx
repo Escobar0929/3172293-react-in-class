@@ -1,32 +1,28 @@
-import { useState, useEffect } from "react";
-
 import { Outlet } from "react-router-dom";
+import { useState, useEffect} from "react";
 import authBg from "@/assets/images/bg-1.png"; 
-import {
+import { 
   Input,
-  Button,
-  DeleteCounter2,
+  Button, 
   Select,
-  Checkbox} 
-from "@/shared";
+  // Checkbox
+} 
+  from "@/shared"; 
 import { getDocumentTypes } from "../../services/selectServices";
- 
 
 
 export default function AuthLayout(){
+   // Estado para los tipos de documentos
+ const[documentTypes, setDocumentTypes] = useState([])
 
-  // Estado para los tipos de documentos 
-  const [documentTypes, setDocumentTypes] = useState([]);
-
-  // Uso del estado useEffect
-  useEffect(()=> {
-    getDocumentTypes().then(setDocumentTypes);
-  }, []);
-
+//  Uso del estado useEffect
+ useEffect(() => {
+  getDocumentTypes().then(setDocumentTypes);
+ },[])
   return (
-    <>
+      <>
       <div 
-        className="min-h-screen w-full "
+        className="min-h-screen w-full"
         style={{
           backgroundImage: `url(${authBg})`,
           backgroundSize: "cover",
@@ -55,17 +51,17 @@ export default function AuthLayout(){
             placeholder="Escribe tu telefono"
             htmlFor="user-phone"
           />
+            <Select 
+            label="Tipos de documentos"
+            name="userDocumentTypes"
+            htmlFor="userDocumentTypes"
+            options={documentTypes}
+            />
           <Input 
-            label="tipo de documento"
+            label="Documento"
             type="text"
-            placeholder="Escribe tu telefono"
-            htmlFor="name"
-          />
-          <Input 
-            label="Contraseña"
-            type="password"
-            placeholder="Escribe tu password
-            htmlFor="user-password"
+            placeholder="Escribe tu numero de documento"
+            htmlFor="user-document-number"
           />
 
           {/* Actions */}
@@ -74,7 +70,7 @@ export default function AuthLayout(){
             variant="secondary"
             size="sm"
             type="button"
-            onClick= {() => console.log("Se oprimio cancelar")}
+            onClick= {() => console.log("Boton presionado")}
             > cancelar
             </Button>
             
@@ -82,58 +78,36 @@ export default function AuthLayout(){
             variant="primary"
             size="md"
             type="button"
-            onClick= {() => console.log("Se oprimio guardar")}
+            onClick= {() => console.log("Boton presionado")}
             > Guardar
             </Button>
           </div>
-          {/*Actions  */}
-          {/* Implementacion del estado useState */}
           
-          <div className="mt-10">
+          {/*Actions*/ }
+
+          {/* Imprementacion del estado de useState */}
+          {/* <div className="mt-10">
             <h1>Ejemplo sin useState</h1>
             <DeleteCounter2/>
-          </div>
-
-          {/* <h1>Hola que tal</h1>*/}
-
-          {/*  Implmentación de useEffect*/}
-
-          {/* <div className="mt-12">
-            <h1>Este es mi useEffect</h1>
-            <EffectDemo />
           </div> */}
-        
-          {/* <CounterEffect/> */}
 
-          <Select
+          {/* Imprementacion del estado de useEffect
+          <div className="mt-12">
+            <CounterEffect/>
+          </div> */}
+
+            {/* Aqui es para escoger la opcion */}
+          {/* <Select 
             label="Tipos de documentos"
-            name="userdocumentTypes"
-            htmlFor="userdocumentTypes"
+            name="userDocumentTypes"
+            htmlFor="userDocumentTypes"
             options={documentTypes}
-          />  
+            /> */}
 
-          {/* <Checkbox 
-            id="isSuperUser"
-            name="isSuperUser"
-            label="Es el super usuario"
-            Checked={FormData.isSuperUser}
-            onChange={handleChange}
-          />
-          <Checkbox 
+            {/* <Checkbox
             id="isStaff"
             name="isStaff"
-            label="Es staff"
-            Checked={FormData.isStaff}
-            onChange={handleChange}
-          />
-          <Checkbox 
-            id="isActive"
-            name="isActive"
-            label="Esta activo"
-            Checked={FormData.isAcitve}
-            onChange={handleChange}
-          /> */}
-
+             */}
 
           <Outlet/>
         </main>
