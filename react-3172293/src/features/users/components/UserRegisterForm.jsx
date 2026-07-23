@@ -1,15 +1,17 @@
 // Componente para registrar un usuario 
 import { useState, useEffect } from "react"
+import { userSchema } from "../schemas/userSchema";
 import{
     Input,
+    Button,
+    StatusSwitch,
     Select,
     Checkbox,
-    Button,
     IconButton,
+    FileInput,
  } from "@/shared";
  import { getDocumentTypes } from "../../../services/selectServices";
  import { useNavigate } from "react-router-dom";
- import { userSchema } from "../schemas/userSchema";
  import { ArrowLeft } from "lucide-react";
 
 export  default function UserRegisterForm() {
@@ -31,10 +33,26 @@ export  default function UserRegisterForm() {
         userDocumentTypes:"",
         userDocumentNumber:"",
         userPassword:"",
+        userImage: [],
+
+        // Flags booleanos 
         isStaff: false,
         isActive: true,
         isSuperUser: false,
-    })
+    });
+
+          <FileInput 
+            value={formData.userImage}
+            onChange={(files) =>
+              setFormData((prev) => ({ ...prev, userImage: files }))
+            }
+
+            multiple={true}
+            />
+            {errors.userImage && ( 
+              <span className="text-red-500 text-sm">{errors.userIamge}</span>
+            )}
+                        
 
     // Handle generico
 
@@ -52,9 +70,11 @@ export  default function UserRegisterForm() {
 
         // Limpiar el error del campo si existe
         setErrors((prevErrors) => {
-            if (!prevErrors[name]) return prevErrors;
-            const { [name]: _, ...rest } = prevErrors;
-            return rest;
+          if (!prevErrors[name]) return prevErrors;
+
+          const rest = { ...prevErrors };
+          delete rest[name];
+          return rest;
         });
     };
 
@@ -203,6 +223,14 @@ export  default function UserRegisterForm() {
             onChange={handleChange}
             error={errors.userPassword}
           />
+
+          <div className="p-6 max-w-md space-y-4">
+            <StatusSwitch
+            checked={formData.isActive}
+            onChanges={handleChange}
+            size="md"
+            />
+          </div>
           {/* Checkbox */}
 
           <div className="grid gap-4 my-2">
@@ -229,6 +257,14 @@ export  default function UserRegisterForm() {
           label="Esta activo"
           checked={formData.isActive}
           onChange={handleChange}
+          />
+
+          <FileInput
+          value={formData.userImage}
+          onChange={(files) =>
+            setFormData((prev) => ({ ...prev, userImage: files}))
+          }
+          multiple={true}
           />
 
           </div>

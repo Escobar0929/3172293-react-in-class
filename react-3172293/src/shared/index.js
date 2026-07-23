@@ -17,6 +17,7 @@ export { default as FileInput } from "./components/FileInput";
 export { default as StatusSwitch } from "./components/StatusSwitch";
 export { default as DataTable } from "./components/DataTable";
 export * from "./components/Dropdown";
+export { default as Card } from "./components/Card";
 
 // Layaut components
 export { default as Navbar } from "./layouts/Navbar";

@@ -3,12 +3,17 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import { AuthLayout } from "@/shared";
 import { DashboardLayout} from "@/shared";
 import { UserListPage, UserRegisterForm } from "@/features/users";
+import HomePages from "@/features/Home/pages/HomePages";
 // import DeleteCounter from "@/shared/components/DeleteCounter";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Navigate to="/dashboard" replace />,
+  },
+  {
+    path: "/HomePage",
+    element: <HomePages/>,
   },
   {
     path: "/auth",
